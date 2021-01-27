@@ -10,9 +10,7 @@ class Player {
     drawPlayer() {
         const playerImg = new Image();
         playerImg.src = this.img;
-        playerImg.onload = () => {
-            context.drawImage(playerImg, this.x, this.y, this.width, this.height);
-        };
+        context.drawImage(playerImg, this.x, this.y, this.width, this.height);
     }
 
     movePlayer(keyCode) {
@@ -21,16 +19,15 @@ class Player {
             case 37:
                 this.img = './images/playerL.png';
                 if (this.x > 0) {
-                    this.x -= 10;
+                    this.x -= 6;
                 }
             break;
             case 39:
                 this.img = './images/playerR.png';
                 if (this.x < 700) {
-                    this.x += 10;
+                    this.x += 6;
                 }
             break;
         }
-        this.drawPlayer();
     }
 }

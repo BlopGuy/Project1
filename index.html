@@ -9,24 +9,22 @@
 </head>
 
 <body>
-    <div class ='room'>
+    <!--<div class ='room hidden'>
         <canvas id='canvas' class='centered background-img' width="888" height="473"></canvas>
         <div class='instructions'>Use <- and -> to move your character!</and></div>
-    </div>
+    </div>-->
 
-    <div class = 'dino hidden'>
-
-    </div>
-
-    <div class = 'paper-run hidden'>
-
+    <div class = 'dino'>
+        <canvas id='dino-run' class='centered' width="525" height="200"></canvas>
+        <div class='instructions-dino'>Connection lost! <br> Have some fun in the meantime (use arrowUp to jump!).</and></div>
     </div>
 
     <script src='player.js'></script>
     <script src='room.js'></script>
+    <script src='dino.js'></script>
+    <script src='desert.js'></script>
     <script src='dino-run.js'></script>
-    <script src='toilet-run.js'></script>
-    <script src='index.js'></script>
+    <!--<script src='index.js'></script>-->
 </body>
 
 </html>
