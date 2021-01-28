@@ -5,19 +5,22 @@ const image = new Image();
 image.src = './images/t-rex-background.png';
 const dino = new Dino();
 let cacti = [];
-let cactiFrequency = 2;
+let pteros = [];
 let score = 0;
+let cactusTimeStamps = [200,300,400];
 let cactusTimer = 0;
 let highScore = 0
 let dinoFrame;
 let walkTimer = 100;
+let pteroTimer = 0;
+let pteroTimeStamps = [1000,2000,3000];
 
 
 
 const backgroundImage = {
     image: image,
     x: 0,
-    speed: -2,
+    speed: -3,
     move: function () {
         this.x += this.speed; //-1 -2 -3 
         this.x %= dinoCanvas.width; //-500%500=0 => -1 -2 -3
@@ -30,15 +33,23 @@ const backgroundImage = {
 
 function detectCollision(obstacle) {
     return !((dino.x - 15 + dino.width < obstacle.x) ||
-        (dino.y - 15 + dino.height < obstacle.y));
+        (dino.y - 25 + dino.height < obstacle.y));
 }
 
 function addCactus() {
     if (cactusTimer <= 0) {
       cacti.push(new Cactus());
-      cactusTimer = 300;
+      cactusTimer = cactusTimeStamps[Math.floor(Math.random() * 3)];
     }
-    cactusTimer -= 1;
+    cactusTimer -= 2;
+  }
+
+  function addPtero() {
+    if (pteroTimer <= 0) {
+      pteros.push(new Pterodactyl());
+      pteroTimer = pteroTimeStamps[Math.floor(Math.random() * 3)];
+    }
+    pteroTimer -= 2;
   }
 
 function drawWalk() {
@@ -60,15 +71,23 @@ function updateDinoCanvas() {
     backgroundImage.draw();
 
     drawWalk();
-    cactusTimer -= 1;
     addCactus();
+    addPtero();
+
+    for(let i = 0; i < pteros.length; i++) {
+        pteros[i].x -= 2;
+        pteros[i].draw();
+
+        if(pteros.length > 0 && pteros[i].x < (0 - pteros[i].width)) {
+            pteros.splice(i, 1);
+        }
+    }
 
     for (let i = 0; i < cacti.length; i++) {
-        cacti[i].x -= 2;
+        cacti[i].x -= 3;
         cacti[i].draw();
         
         if (detectCollision(cacti[i])) {
-            cactiFrequency = 0;
             if(score > highScore) {
                 highScore = score;
                 document.querySelector('#highscore-span').innerHTML = highScore;
@@ -81,7 +100,7 @@ function updateDinoCanvas() {
         }
 
 
-        if (cacti.length > 0 && cacti[i].x <= 0) {
+        if (cacti.length > 0 && cacti[i].x < 0 - cacti[i].width) {
             cacti.splice(i, 1);
             score++;
             document.querySelector('#score-span').innerHTML = score;
@@ -94,6 +113,7 @@ function updateDinoCanvas() {
 
 function returnRoom() {
     highScore = 0;
+    gamePlayed = true;
     document.querySelector('#highscore-span').innerHTML = 0;
     document.querySelector('.instructions strong').innerHTML = 'Well, I suppose the Netflix servers don\'t need managing today... <br> <i>distant noises of angry costumers</i>'
     document.body.style.backgroundColor = '#2D4037';

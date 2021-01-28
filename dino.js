@@ -31,10 +31,10 @@ class Dino {
 
                 let jumping = setInterval(() => {
                     if (this.y > 25 && !this.goingDown) {
-                        this.y -= 7;
+                        this.y -= 6;
                     } else {
                         this.goingDown = true;
-                        this.y += 10;
+                        this.y += 7;
                         if (this.y >= 130) {
                             clearInterval(jumping);
                             this.goingDown = false;

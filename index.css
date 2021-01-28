@@ -83,6 +83,14 @@ body {
 	background-color:#f24437;
 }
 
+#End {
+    color: wheat;
+    font-size: 100px;
+    position: absolute;
+    top: 24%;
+    left: 30%;
+}
+
         
 
 

@@ -3,11 +3,12 @@ let context = canvas.getContext("2d");
 
 let currentGame;
 let animationId;
+let gamePlayed = false;
 
 document.onkeydown = e => {
-    if(e.keyCode == 37 || e.keyCode == 39) {
+    if (e.keyCode == 37 || e.keyCode == 39) {
         currentGame.player.movePlayer(e.keyCode);
-    } else if(e.keyCode = 38) {
+    } else if (e.keyCode = 38) {
         dino.moveDino(e.keyCode);
     }
 }
@@ -30,7 +31,13 @@ function runDinoGame() {
 function updateCanvas() {
     currentGame.player.drawPlayer();
 
-    if(currentGame.player.x > 650) {
+    if (currentGame.player.x < 50 && gamePlayed == true) {
+        document.querySelector('#room-html').classList.add('hidden');
+        document.querySelector('#End').classList.remove('hidden');
+        document.body.style.backgroundColor = '#171918';
+    }
+
+    if (currentGame.player.x > 650) {
         document.body.style.backgroundColor = '#FFF';
         runDinoGame();
         context.clearRect(0, 0, canvas.width, canvas.height);
