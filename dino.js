@@ -4,20 +4,31 @@ class Dino {
         this.y = 130;
         this.width = 60;
         this.height = 60;
-        this.img = './images/t-rex.png';
+        this.imgIdle = './images/t-rex.png';
+        this.imgLeft = './images/dinoL.png';
+        this.imgRight = './images/dinoR.png';
         this.goingDown = false;
     }
 
-    drawDino() {
+    drawDino(frame) {
         const dinoImg = new Image();
-        dinoImg.src = this.img;
+        switch (frame) {
+            case 0:
+                dinoImg.src = this.imgLeft;
+                break;
+            case 1:
+                dinoImg.src = this.imgRight;
+                break;
+
+        }
         dinoContext.drawImage(dinoImg, this.x, this.y, this.width, this.height);
+
     }
 
     moveDino(keyCode) {
         switch (keyCode) {
             case 38:
-                
+
                 let jumping = setInterval(() => {
                     if (this.y > 25 && !this.goingDown) {
                         this.y -= 7;

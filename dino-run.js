@@ -10,13 +10,14 @@ let score = 0;
 let cactusTimer = 0;
 let highScore = 0
 let dinoFrame;
+let walkTimer = 100;
 
 
 
 const backgroundImage = {
     image: image,
     x: 0,
-    speed: -1,
+    speed: -2,
     move: function () {
         this.x += this.speed; //-1 -2 -3 
         this.x %= dinoCanvas.width; //-500%500=0 => -1 -2 -3
@@ -35,15 +36,31 @@ function detectCollision(obstacle) {
 function addCactus() {
     if (cactusTimer <= 0) {
       cacti.push(new Cactus());
-      cactusTimer = 200;
+      cactusTimer = 300;
     }
     cactusTimer -= 1;
   }
 
+function drawWalk() {
+    console.log(walkTimer);
+    if (walkTimer <= 50) {
+        dino.drawDino(0);
+        walkTimer-= 2;
+      } else if(walkTimer > 50){
+        dino.drawDino(1);
+        walkTimer-= 2;
+      } 
+      if(walkTimer === 0) {
+        walkTimer = 100;
+      }
+}
+
 function updateDinoCanvas() {
     backgroundImage.move();
     backgroundImage.draw();
-    dino.drawDino();
+
+    drawWalk();
+    cactusTimer -= 1;
     addCactus();
 
     for (let i = 0; i < cacti.length; i++) {
@@ -76,6 +93,8 @@ function updateDinoCanvas() {
 }
 
 function returnRoom() {
+    highScore = 0;
+    document.querySelector('#highscore-span').innerHTML = 0;
     document.querySelector('.instructions strong').innerHTML = 'Well, I suppose the Netflix servers don\'t need managing today... <br> <i>distant noises of angry costumers</i>'
     document.body.style.backgroundColor = '#2D4037';
     document.querySelector('#room-html').classList.remove('hidden');
