@@ -45,3 +45,9 @@ body {
     
 }
 
+.dino h4 {
+    position: absolute;
+    top: 20%;
+    left: 59%;
+}
+

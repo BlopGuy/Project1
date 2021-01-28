@@ -4,6 +4,10 @@ let dinoContext = dinoCanvas.getContext('2d');
 const image = new Image();
 image.src = './images/t-rex-background.png';
 const dino = new Dino();
+let cacti = [];
+let cactiFrequency = 2;
+let score = 0;
+let cactusTimer = 0;
 
 document.onkeydown = e => {
     dino.moveDino(e.keyCode);
@@ -13,23 +17,59 @@ const backgroundImage = {
     image: image,
     x: 0,
     speed: -1,
-    move: function() {
+    move: function () {
         this.x += this.speed; //-1 -2 -3 
         this.x %= dinoCanvas.width; //-500%500=0 => -1 -2 -3
     },
-    draw: function() {
+    draw: function () {
         dinoContext.drawImage(this.image, this.x, 0);
         dinoContext.drawImage(this.image, this.x + dinoCanvas.width, 0);
     }
 }
 
-function updateCanvas() {
-      backgroundImage.move();
-      backgroundImage.draw();
-      dino.drawDino();
+function detectCollision(obstacle) {
+    return !((dino.x - 15 + dino.width < obstacle.x) ||
+        (dino.y - 15 + dino.height < obstacle.y));
+}
 
-      
-      requestAnimationFrame(updateCanvas);
+function addCactus() {
+    if (cactusTimer <= 0) {
+      cacti.push(new Cactus());
+      cactusTimer = 200;
+    }
+    cactusTimer -= 1;
+  }
+
+function updateCanvas() {
+    backgroundImage.move();
+    backgroundImage.draw();
+    dino.drawDino();
+    addCactus();
+
+    for (let i = 0; i < cacti.length; i++) {
+        cacti[i].x -= 2;
+        cacti[i].draw();
+        
+        if (detectCollision(cacti[i])) {
+            alert("Those are spiky!")
+            cactiFrequency = 0;
+            score = 0;
+            document.querySelector('#score').innerHTML = 0;
+            cacti = [];
+            dino.x = 20;
+            dino.y = 130;
+        }
+
+
+        if (cacti.length > 0 && cacti[i].x <= 0) {
+            cacti.splice(i, 1);
+            score++;
+            document.querySelector('#score').innerHTML = score;
+        }
+
+    }
+
+    requestAnimationFrame(updateCanvas);
 }
 
 updateCanvas();

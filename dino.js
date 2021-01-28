@@ -17,17 +17,16 @@ class Dino {
     moveDino(keyCode) {
         switch (keyCode) {
             case 38:
-                console.log('jumping');
                 let jumping = setInterval(() => {
-                    if (this.y > 50 && !this.goingDown) {
-                        console.log('jumping');
-                        this.y -= 10;
+                    if (this.y > 25 && !this.goingDown) {
+                        this.y -= 7;
                     } else {
                         this.goingDown = true;
                         this.y += 10;
-                        if (this.y === 130) {
+                        if (this.y >= 130) {
                             clearInterval(jumping);
                             this.goingDown = false;
+                            this.y = 130;
                         }
                     }
                 }, 50);
