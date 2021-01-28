@@ -4,7 +4,7 @@ body {
 
 
 #canvas{
-    border: 1px solid chocolate;
+    border: 1px solid #2D4037;
     background-image: url('./images/HnHiDVi.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -29,7 +29,8 @@ body {
 .instructions {
     position: absolute;
     top: 80%;
-    left: 42%;
+    left: 36%;
+    text-align: center;
     
 }
 
@@ -40,7 +41,7 @@ body {
 .instructions-dino {
     position: absolute;
     top: 60%;
-    left: 38%;
+    left: 38.5%;
     text-align: center;
     
 }

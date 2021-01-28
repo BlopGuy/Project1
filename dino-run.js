@@ -76,6 +76,8 @@ function updateDinoCanvas() {
 }
 
 function returnRoom() {
+    document.querySelector('.instructions strong').innerHTML = 'Well, I suppose the Netflix servers don\'t need managing today... <br> <i>distant noises of angry costumers</i>'
+    document.body.style.backgroundColor = '#2D4037';
     document.querySelector('#room-html').classList.remove('hidden');
     document.querySelector('#dino-html').classList.add('hidden');
 }

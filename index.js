@@ -13,6 +13,7 @@ document.onkeydown = e => {
 }
 
 function startGame() {
+    document.body.style.backgroundColor = '#2D4037';
     currentGame = new Room();
     //Instantiate the player
     let playerChar = new Player();
@@ -30,9 +31,10 @@ function updateCanvas() {
     currentGame.player.drawPlayer();
 
     if(currentGame.player.x > 650) {
+        document.body.style.backgroundColor = '#FFF';
         runDinoGame();
         context.clearRect(0, 0, canvas.width, canvas.height);
-        currentGame.player.x = 20;
+        currentGame.player.x = 600;
     }
     animationId = requestAnimationFrame(updateCanvas);
 }
