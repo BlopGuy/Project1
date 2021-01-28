@@ -5,7 +5,11 @@ let currentGame;
 let animationId;
 
 document.onkeydown = e => {
-    currentGame.player.movePlayer(e.keyCode);
+    if(e.keyCode == 37 || e.keyCode == 39) {
+        currentGame.player.movePlayer(e.keyCode);
+    } else if(e.keyCode = 38) {
+        dino.moveDino(e.keyCode);
+    }
 }
 
 function startGame() {
@@ -17,8 +21,19 @@ function startGame() {
     updateCanvas();
 }
 
+function runDinoGame() {
+    document.querySelector('#dino-html').classList.remove('hidden');
+    document.querySelector('#room-html').classList.add('hidden');
+}
+
 function updateCanvas() {
     currentGame.player.drawPlayer();
+
+    if(currentGame.player.x > 650) {
+        runDinoGame();
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        currentGame.player.x = 20;
+    }
     animationId = requestAnimationFrame(updateCanvas);
 }
 

@@ -9,13 +9,13 @@
 </head>
 
 <body>
-    <div id = 'room-html' class = 'room hidden'>
+    <div id = 'room-html' class = 'room'>
         <canvas id='canvas' class='centered background-img' width="888" height="473"></canvas>
         <div class='instructions'>Use <- and -> to move your character!</and>
         </div>
     </div>
 
-    <div id = 'dino-html' class = 'dino'>
+    <div id = 'dino-html' class = 'dino hidden'>
         <h4 id='highscore'>Highscore: <span id='highscore-span'>0</span> </h4>
         <h4 id='score'>Score: <span id='score-span'>0</span></h4>
         <canvas id = 'dino-run' class='centered' width="525" height="200"></canvas>
@@ -25,7 +25,7 @@
 
 
 
-    <div id = 'dino-script' class = 'dino-script'>
+    <div id = 'dino-script' class = 'dino-script hidden'>
         
         <script src='dino.js'></script>
         <script src='cactus.js'></script>
@@ -34,7 +34,7 @@
         
     </div>
 
-    <div id='room-script' class = 'room hidden'>
+    <div id='room-script' class = 'room'>
         <script src='player.js'></script>
         <script src='room.js'></script>
         <script src='index.js'></script>

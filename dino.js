@@ -17,6 +17,7 @@ class Dino {
     moveDino(keyCode) {
         switch (keyCode) {
             case 38:
+                
                 let jumping = setInterval(() => {
                     if (this.y > 25 && !this.goingDown) {
                         this.y -= 7;

@@ -11,9 +11,7 @@ let cactusTimer = 0;
 let highScore = 0
 let dinoFrame;
 
-document.onkeydown = e => {
-    dino.moveDino(e.keyCode);
-}
+
 
 const backgroundImage = {
     image: image,
@@ -78,9 +76,6 @@ function updateDinoCanvas() {
 }
 
 function returnRoom() {
-
-    cancelAnimationFrame(dinoFrame)
-
     document.querySelector('#room-html').classList.remove('hidden');
     document.querySelector('#dino-html').classList.add('hidden');
 }

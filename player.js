@@ -14,6 +14,7 @@ class Player {
     }
 
     movePlayer(keyCode) {
+        console.log('im here');
         context.clearRect(this.x, this.y, this.width, this.height);
         switch(keyCode) {
             case 37:
