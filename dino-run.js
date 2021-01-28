@@ -8,6 +8,8 @@ let cacti = [];
 let cactiFrequency = 2;
 let score = 0;
 let cactusTimer = 0;
+let highScore = 0
+let dinoFrame;
 
 document.onkeydown = e => {
     dino.moveDino(e.keyCode);
@@ -40,7 +42,7 @@ function addCactus() {
     cactusTimer -= 1;
   }
 
-function updateCanvas() {
+function updateDinoCanvas() {
     backgroundImage.move();
     backgroundImage.draw();
     dino.drawDino();
@@ -51,10 +53,13 @@ function updateCanvas() {
         cacti[i].draw();
         
         if (detectCollision(cacti[i])) {
-            alert("Those are spiky!")
             cactiFrequency = 0;
+            if(score > highScore) {
+                highScore = score;
+                document.querySelector('#highscore-span').innerHTML = highScore;
+            }
             score = 0;
-            document.querySelector('#score').innerHTML = 0;
+            document.querySelector('#score-span').innerHTML = 0;
             cacti = [];
             dino.x = 20;
             dino.y = 130;
@@ -64,12 +69,20 @@ function updateCanvas() {
         if (cacti.length > 0 && cacti[i].x <= 0) {
             cacti.splice(i, 1);
             score++;
-            document.querySelector('#score').innerHTML = score;
+            document.querySelector('#score-span').innerHTML = score;
         }
 
     }
 
-    requestAnimationFrame(updateCanvas);
+    dinoFrame = requestAnimationFrame(updateDinoCanvas);
 }
 
-updateCanvas();
+function returnRoom() {
+
+    cancelAnimationFrame(dinoFrame)
+
+    document.querySelector('#room-html').classList.remove('hidden');
+    document.querySelector('#dino-html').classList.add('hidden');
+}
+
+updateDinoCanvas();

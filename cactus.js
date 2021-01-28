@@ -1,7 +1,7 @@
 class Cactus {
     constructor(){
         this.x = 525;
-        this.y = 130;
+        this.y = 140;
         this.width = 60;
         this.height = 60;
         this.image = './images/cacti.png'
@@ -17,7 +17,7 @@ class Cactus {
 
         let moveLeft = setInterval(() => {
             console.log('im here');
-            this.x -= 2;
+            this.x -= 1;
             if(this.x < 0) {
                 clearInterval(moveLeft);
             }

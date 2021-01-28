@@ -45,9 +45,43 @@ body {
     
 }
 
-.dino h4 {
+#highscore{
+    position: absolute;
+    top: 20%;
+    left: 35%;
+}
+
+#score{
     position: absolute;
     top: 20%;
     left: 59%;
 }
+
+#return-button {
+    position: absolute;
+    top: 94%;
+    box-shadow: 0px 3px 3px 0px #8a2a21;
+	background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+	background-color:#c62d1f;
+	border-radius:6px;
+	border:2px solid #d02718;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:11px 16px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #810e05;
+
+}
+
+#return-button:hover {
+	background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+	background-color:#f24437;
+}
+
+        
+
 
