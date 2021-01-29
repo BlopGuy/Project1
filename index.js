@@ -14,7 +14,6 @@ document.onkeydown = e => {
 }
 
 function startGame() {
-    document.body.style.backgroundColor = '#3B403E';
     currentGame = new Room();
     //Instantiate the player
     let playerChar = new Player();
@@ -28,10 +27,16 @@ function runDinoGame() {
     document.querySelector('#room-html').classList.add('hidden');
 }
 
+function wakeUp() {
+    document.querySelector('#start').classList.add('hidden');
+    document.querySelector('#room-html').classList.remove('hidden');
+    document.body.style.backgroundColor = '#3B403E';
+}
+
 function updateCanvas() {
     currentGame.player.drawPlayer();
 
-    if (currentGame.player.x < 50 && gamePlayed == true) {
+    if (currentGame.player.x < 100 && gamePlayed == true) {
         document.querySelector('#room-html').classList.add('hidden');
         document.querySelector('#End').classList.remove('hidden');
         document.body.style.backgroundColor = '#171918';

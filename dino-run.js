@@ -33,7 +33,7 @@ const backgroundImage = {
 
 function detectCollision(obstacle) {
     return !((dino.x - 15 + dino.width < obstacle.x) ||
-        (dino.y - 25 + dino.height < obstacle.y));
+        (dino.y - 35 + dino.height < obstacle.y));
 }
 
 function addCactus() {

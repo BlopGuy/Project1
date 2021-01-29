@@ -5,6 +5,8 @@ class Cactus {
         this.width = 60;
         this.height = 60;
         this.image = './images/cacti.png'
+        this.image2 = './images/cacti2.png';
+        this.image3 = './images/cacti3.png';
     }
 
     draw() {

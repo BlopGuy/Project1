@@ -9,36 +9,44 @@
 </head>
 
 <body>
-    <div id = 'End' class = 'hidden'>
+    <div id='End' class='hidden'>
         <h1>The End</h1>
     </div>
-    <div id = 'room-html' class = 'room'>
+    <div id='start' class=''>
+        <div id='startText'>
+            <h1>Bad ISP life</h1>
+            <h2>The story of lockdown coding</h2>
+        </div>
+        <button id='startButton' onclick="wakeUp()">Wake Up</button>
+    </div>
+    <div id='room-html' class='room hidden'>
         <canvas id='canvas' class='centered background-img' width="888" height="473"></canvas>
-        <div class='instructions'><strong>Good morning, me. Guess it's another day of remote work, huh? <br> Use <- and -> to move around the room.</and></strong></and>
+        <div class='instructions'><strong>Good morning, me. Guess it's another day of remote work, huh? <br> Use <- and
+                    -> to move around the room.</and></strong></and>
         </div>
     </div>
 
-    <div id = 'dino-html' class = 'dino hidden'>
+    <div id='dino-html' class='dino hidden'>
         <h4 id='highscore'>Highscore: <span id='highscore-span'>0</span> </h4>
         <h4 id='score'>Score: <span id='score-span'>0</span></h4>
-        <canvas id = 'dino-run' class='centered' width="525" height="200"></canvas>
+        <canvas id='dino-run' class='centered' width="525" height="200"></canvas>
         <div class='instructions-dino'>Connection lost! <br> Have some fun in the meantime (use arrowUp to jump!).</div>
         <button id='return-button' onclick="returnRoom()">Shut Down</button>
     </div>
 
 
 
-    <div id = 'dino-script' class = 'dino-script hidden'>
-        
+    <div id='dino-script' class='dino-script'>
+
         <script src='dino.js'></script>
         <script src='pterodactyl.js'></script>
         <script src='cactus.js'></script>
         <script src='desert.js'></script>
         <script src='dino-run.js'></script>
-        
+
     </div>
 
-    <div id='room-script' class = 'room'>
+    <div id='room-script' class='room'>
         <script src='player.js'></script>
         <script src='room.js'></script>
         <script src='index.js'></script>

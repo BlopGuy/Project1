@@ -8,8 +8,10 @@ class Pterodactyl {
     }
 
     draw() {
+    
         const pterodactylImg = new Image();
         pterodactylImg.src = this.img;
         dinoContext.drawImage(pterodactylImg, this.x, this.y, this.width, this.height);
+        
     }
 } 

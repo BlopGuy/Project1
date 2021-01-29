@@ -13,17 +13,20 @@ class Dino {
 
     drawDino(frame) {
         const dinoImg = new Image();
-        switch (frame) {
-            case 0:
-                dinoImg.src = this.imgLeft;
-                break;
-            case 1:
-                dinoImg.src = this.imgRight;
-                break;
+        if(this.jumping == true) {
+            dinoImg.src = this.imgIdle;
 
+        } else {
+            switch (frame) {
+                case 0:
+                    dinoImg.src = this.imgLeft;
+                    break;
+                case 1:
+                    dinoImg.src = this.imgRight;
+                    break;
+            }
         }
         dinoContext.drawImage(dinoImg, this.x, this.y, this.width, this.height);
-
     }
 
     moveDino(keyCode) {
@@ -32,7 +35,7 @@ class Dino {
                 case 38:
                     this.jumping = true;
                     let jumping = setInterval(() => {
-                        if (this.y > 25 && !this.goingDown) {
+                        if (this.y > 35 && !this.goingDown) {
                             this.y -= 6;
                         } else {
                             this.goingDown = true;
