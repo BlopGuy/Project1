@@ -5,11 +5,12 @@ body {
 
 
 #canvas{
-    border: 1px solid #2D4037;
+    border: 1px solid #3B403E;
     background-image: url('./images/HnHiDVi.png');
     background-size: contain;
     background-repeat: no-repeat;
 
+    border-radius: 3px;
 }
 
 #dino-run {
@@ -30,8 +31,12 @@ body {
 .instructions {
     position: absolute;
     top: 80%;
-    left: 36%;
+    left: 34%;
     text-align: center;
+    border:2px solid #2F3835;
+    background-color: #2F3835;
+    border-radius: 5px;
+    padding: 20px;
 }
 
 .hidden {

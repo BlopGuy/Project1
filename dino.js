@@ -8,6 +8,7 @@ class Dino {
         this.imgLeft = './images/dinoL.png';
         this.imgRight = './images/dinoR.png';
         this.goingDown = false;
+        this.jumping = false;
     }
 
     drawDino(frame) {
@@ -26,24 +27,28 @@ class Dino {
     }
 
     moveDino(keyCode) {
-        switch (keyCode) {
-            case 38:
-
-                let jumping = setInterval(() => {
-                    if (this.y > 25 && !this.goingDown) {
-                        this.y -= 6;
-                    } else {
-                        this.goingDown = true;
-                        this.y += 7;
-                        if (this.y >= 130) {
-                            clearInterval(jumping);
-                            this.goingDown = false;
-                            this.y = 130;
+        if(this.jumping === false) {
+            switch (keyCode) {
+                case 38:
+                    this.jumping = true;
+                    let jumping = setInterval(() => {
+                        if (this.y > 25 && !this.goingDown) {
+                            this.y -= 6;
+                        } else {
+                            this.goingDown = true;
+                            this.y += 7;
+                            if (this.y >= 130) {
+                                clearInterval(jumping);
+                                this.jumping = false;
+                                this.goingDown = false;
+                                this.y = 130;
+                            }
                         }
-                    }
-                }, 50);
-                break;
+                    }, 50);
+                    break;
+            }
         }
+        
 
     }
 }

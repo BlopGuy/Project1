@@ -14,7 +14,7 @@ document.onkeydown = e => {
 }
 
 function startGame() {
-    document.body.style.backgroundColor = '#2D4037';
+    document.body.style.backgroundColor = '#3B403E';
     currentGame = new Room();
     //Instantiate the player
     let playerChar = new Player();
